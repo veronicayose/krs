@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-    <a href="index.html" class="app-brand-link">
+     <a href="index.html" class="app-brand-link">
         <span class="app-brand-logo demo">
         <svg
             width="25"
@@ -59,11 +59,12 @@
         <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
     </a>
 
+
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
         <i class="bx bx-chevron-left bx-sm align-middle"></i>
     </a>
     </div>
-
+    
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
@@ -81,6 +82,13 @@
                 <div>Dosen</div>
             </a>
         </li>
+        
+        <li class="menu-item">
+            <a href="/<?= $folder ?>/mahasiswa" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Mahasiswa</div>
+            </a>
+        </li>
 
         <li class="menu-item">
             <a href="/<?= $folder ?>/prodi" class="menu-link">
@@ -93,6 +101,13 @@
             <a href="/<?= $folder ?>/ruang" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div>Ruang</div>
+            </a>
+        </li>
+        
+        <li class="menu-item">
+            <a href="/<?= $folder ?>/krs_hdr" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-open"></i>
+                <div>KRS</div>
             </a>
         </li>
     </ul>
