@@ -1,17 +1,14 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    for($i = 0; $i<$length; $i++){
-        $statement = $mysqli->prepare("INSERT INTO krs_dtl (no_jadwal_detail, id_krs_hdr) VALUES (?, ?)");
-        $statement->bind_param('ss', $_POST['no_jadwal_detail'], $_POST['id_krs_hdr']);
-        $statement->execute();
-        $statement->close();
-        redirect("krs_hdr/detail?id_krs_hdr=".$_GET['id_krs_hdr']);
-        exit;
-    }
+    $statement = $mysqli->prepare("INSERT INTO krs_dtl (no_jadwal_detail, id_krs_hdr) VALUES (?, ?)");
+    $statement->bind_param('ss', $_POST['no_jadwal_detail'], $_POST['id_krs_hdr']);
+    $statement->execute();
+    $statement->close();
+    redirect("krs_hdr/detail?id_krs_hdr=".$_GET['id_krs_hdr']);
+    exit;
 }
 else {
     $result = $mysqli->query("SELECT * FROM jadwal_hdr a JOIN jadwal_dtl b ON a.no_jadwal_hdr=b.no_jadwal_hdr JOIN kelas c ON  c.kode_kelas = b.kode_kelas JOIN dosen d ON c.nid_dosen = d.nid_dosen JOIN matkul e ON e.kode_matkul = c.kode_matkul");
-    $length = count($result);
 ?>
     <div class="table-responsive text-nowrap">
     <form method="post">
