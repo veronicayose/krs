@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 else {
     $dosenResult = $mysqli->query("SELECT * FROM dosen");
+    $kurikulumResult = $mysqli->query("SELECT * FROM kurikulum");
     $result = $mysqli->query("SELECT * FROM mahasiswa WHERE nim=".$_GET['nim_mhs']);
     $row = $result->fetch_assoc();
     if (!$row) {
@@ -38,7 +39,16 @@ else {
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-company">Tahun Kurikulum</label>
                 <div class="col-sm-10">
-                    <input value="<?= $row['tahun_kurikulum'] ?>" type="text" class="form-control" placeholder="Tahun Kurikulum" name="tahun_kurikulum">
+                <input class="form-control" list="kurikulum" placeholder="Cari..." name="kode_kurikulum">
+                    <datalist id="kurikulum">
+                        <?php 
+                            while ($row1 = $kurikulumResult->fetch_assoc()) {
+                        ?>
+                        <option value="<?= $row1['kode_kurikulum'] ?>"><?= $row1['tahun_berlaku']?></option>
+                        <?php
+                            }
+                        ?>
+                    </datalist>
                 </div>
             </div>
             <div class="row mb-3">
