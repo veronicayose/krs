@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $statement->bind_param('s', $_POST['id_krs_dtl']);
     $statement->execute();
     $statement->close();
-    redirect("krs_dtl");
+    redirect("krs_hdr");
     exit;
 }
 ?>

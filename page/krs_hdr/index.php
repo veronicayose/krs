@@ -1,5 +1,5 @@
 <?php 
-    $result = $mysqli->query("SELECT * FROM krs_hdr a JOIN mahasiswa b ON a.nim = b.nim");
+    $result = $mysqli->query("SELECT * FROM krs_mahasiswa_view");
 ?>
 <div class="card">
     <div class="card-header row justify-content-between">

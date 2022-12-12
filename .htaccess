@@ -2,5 +2,7 @@
 	RewriteEngine on 
 	RewriteRule ^$ index.php [L] 
 	RewriteRule ^assets/([a-z/]+)$ /assets/$1 [L]
+	RewriteRule ^admin/([a-z\-\_/]+)$ admin_index.php?content=$1 [L,QSA]
+	RewriteRule ^student/([a-z\-\_/]+)$ student_index.php?content=$1 [L,QSA]
 	RewriteRule ^([a-z\-\_/]+)$ index.php?content=$1 [L,QSA]
 </IfModule>

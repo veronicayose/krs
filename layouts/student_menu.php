@@ -1,3 +1,11 @@
+<?php
+$qry = $mysqli->query("SELECT MAX(semester) FROM krs_hdr WHERE nim = $username;");
+$result = $qry->fetch_assoc();
+$semester = $result['MAX(semester)'];
+
+$qry = $mysqli->query("SELECT * FROM krs_hdr WHERE nim = $username AND semester = $semester;");
+$result = $qry->fetch_assoc();
+?>
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
      <a href="index.html" class="app-brand-link">
@@ -70,58 +78,23 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item">
-            <a href="/<?= $folder ?>/admin_index.php" class="menu-link">
+            <a href="/<?= $folder ?>/student_index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Dashboard</div>
             </a>
         </li>
-
-        <li class="menu-item">
-            <a href="/<?= $folder ?>/dosen" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div>Dosen</div>
-            </a>
-        </li>
         
         <li class="menu-item">
-            <a href="/<?= $folder ?>/admin/mahasiswa" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div>Mahasiswa</div>
-            </a>
-        </li>
-
-        <li class="menu-item">
-            <a href="/<?= $folder ?>/prodi" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-content"></i>
-                <div>Prodi</div>
-            </a>
-        </li>
-
-        <li class="menu-item">
-            <a href="/<?= $folder ?>/ruang" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-building"></i>
-                <div>Ruang</div>
-            </a>
-        </li>
-        
-        <li class="menu-item">
-            <a href="/<?= $folder ?>/krs_hdr" class="menu-link">
+            <a href="/<?= $folder ?>/student/krs" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book-open"></i>
                 <div>KRS</div>
             </a>
         </li>
         
         <li class="menu-item">
-            <a href="/<?= $folder ?>/backup/new" class="menu-link">
+            <a href="/<?= $folder ?>/student/isi_krs?id_krs_hdr=<?= $result['id_krs_hdr']?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book-open"></i>
-                <div>Backup</div>
-            </a>
-        </li>
-        
-        <li class="menu-item">
-            <a href="/<?= $folder ?>/restore/new" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-open"></i>
-                <div>Restore</div>
+                <div>Isi KRS</div>
             </a>
         </li>
     </ul>

@@ -1,12 +1,12 @@
 <?php
-/* Membuat variabel, ubah sesuai dengan nama host dan database pada hosting */
+// Membuat variabel, ubah sesuai dengan nama host dan database pada hosting
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'krs';
+$db = 'db_krs';
 $folder = 'krs';
 
-//Menggunakan objek mysqli untuk membuat koneksi dan menyimpanya dalam variabel $mysqli	//
+//Menggunakan objek mysqli untuk membuat koneksi dan menyimpanya dalam variabel $mysqli
 $mysqli = new mysqli($host, $user, $pass, $db);
 
 //Menentukan timezone //
@@ -23,4 +23,16 @@ $thn_sekarang = date('Y');
 
 $tanggal = date('Ymd');
 $jam = date('H:i:s');
+
+function backupFile($backup, $nama_tabel) {
+    global $mysqli;
+    $sql_back_up = "SELECT * INTO OUTFILE '$backup' FROM $nama_tabel";
+    return mysqli_query($mysqli, $sql_back_up);
+}
+
+function restoreFile($restore, $nama_tabel) {
+    global $mysqli;    
+    $sql_back_up = "LOAD DATA INFILE '$restore' INTO TABLE $nama_tabel";
+    return mysqli_query($mysqli, $sql_back_up);
+}
 ?>

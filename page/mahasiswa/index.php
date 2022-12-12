@@ -1,5 +1,5 @@
 <?php 
-    $result = $mysqli->query("SELECT * FROM mahasiswa a JOIN dosen b ON a.nid_dosen = b.nid_dosen");
+    $result = $mysqli->query("SELECT * FROM mahasiswa_dosen_kurikulum_view");
 ?>
 <div class="card">
     <div class="card-header row justify-content-between">
@@ -30,7 +30,7 @@
                 <tr>
                     <td><?= $row['nim'] ?></td>
                     <td><?= $row['nama_mahasiswa'] ?></td>
-                    <td><?= $row['tahun_kurikulum'] ?></td>
+                    <td><?= $row['tahun_berlaku'] ?></td>
                     <td><?= $row['nama_dosen'] ?></td>
                     
                     <td>

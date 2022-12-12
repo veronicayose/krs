@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 else {
-    $result = $mysqli->query("SELECT * FROM krs_hdr a JOIN mahasiswa b ON a.nim = b.nim WHERE id_krs_hdr=".$_GET['id_krs_hdr']);
+    $result = $mysqli->query("SELECT * FROM krs_mahasiswa_view WHERE id_krs_hdr=".$_GET['id_krs_hdr']);
     $row = $result->fetch_assoc();
     if (!$row) {
         redirect('not-found');
